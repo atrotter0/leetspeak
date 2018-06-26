@@ -7,6 +7,14 @@ namespace Translator.Tests
     public class LeetspeakTest
     {
         [TestMethod]
+        public void SetGetUserInput_TestForSetGetInput_CharArray()
+        {
+            Leetspeak testLeetSpeak = new Leetspeak();
+            testLeetSpeak.SetUserInput("Dude");
+            CollectionAssert.AreEqual(new char[]{'D','u','d','e'}, testLeetSpeak.GetUserInput());
+        }
+
+        [TestMethod]
         public void IsLetterE_TestForE_True()
         {
             Leetspeak testLeetspeak = new Leetspeak();

@@ -8,10 +8,11 @@ namespace Translator
         private char[] _userInput;
         private List<char> _newPhrase;
 
-        public void SetUserInput(string userPhrase)
+        public char[] SetUserInput(string userPhrase)
         {
-            char[] charList = userPhrase.ToCharArray();
-            _userInput = charList;
+            char[] individualCharacters = userPhrase.ToCharArray();
+            _userInput = individualCharacters;
+            return individualCharacters;
         }
 
         public char[] GetUserInput()
