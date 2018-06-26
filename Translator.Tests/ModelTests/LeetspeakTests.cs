@@ -36,8 +36,8 @@ namespace Translator.Tests
         {
             Leetspeak testLeetspeak = new Leetspeak();
             testLeetspeak.MakeDictionary();
-            testLeetspeak.SetUserInput("leet");
-            List<char> leetWord = new List<char>() {'l', '3', '3', '7' };
+            testLeetspeak.SetUserInput("sleets");
+            List<char> leetWord = new List<char>() { 's', 'l', '3', '3', '7', 'z' };
             CollectionAssert.AreEqual(leetWord, testLeetspeak.ReplaceValues());
         }
     }
