@@ -58,14 +58,22 @@ namespace Translator
             for (int i = 0; i < length; i++)
             {
                 char character = this.GetUserInput()[i];
-                if (this.GetLetterDictionary().ContainsKey(character))
+                char prevCharacter = '0';
+                if (i > 0)
                 {
-                    //modify value and push
+                    prevCharacter = this.GetUserInput()[i - 1];  
+                }
+
+                if ((character == 's' && i == 0) || (character == 's' && prevCharacter == ' '))
+                {
+                    finalPhrase.Add(character);
+                }
+                else if (this.GetLetterDictionary().ContainsKey(character))
+                {
                     finalPhrase.Add(this.GetDictionaryValue(character));
                 }
                 else
                 {
-                    //just push
                     finalPhrase.Add(character);
                 }
             }
