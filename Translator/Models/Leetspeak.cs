@@ -58,11 +58,10 @@ namespace Translator
             for (int i = 0; i < length; i++)
             {
                 char character = this.GetUserInput()[i];
-                char dictionaryValue = this.GetDictionaryValue(character);
-                if (this.GetLetterDictionary() != null)
+                if (this.GetLetterDictionary().ContainsKey(character))
                 {
                     //modify value and push
-                    finalPhrase.Add(dictionaryValue);
+                    finalPhrase.Add(this.GetDictionaryValue(character));
                 }
                 else
                 {
