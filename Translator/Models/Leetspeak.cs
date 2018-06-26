@@ -6,7 +6,7 @@ namespace Translator
     public class Leetspeak
     {
         private char[] _userInput;
-        private List<char> _newPhrase;
+        private List<char> _newPhrase = new List<char>() { };
         private Dictionary<char, char> _letterDictionary;
 
         public void SetUserInput(string userPhrase)
@@ -35,6 +35,12 @@ namespace Translator
             return _letterDictionary[key];
         }
 
+        public Dictionary<char, char> GetLetterDictionary()
+        {   
+            this.MakeDictionary();
+            return _letterDictionary;
+        }
+
         public void MakeDictionary()
         {
             _letterDictionary = new Dictionary<char, char>() {};
@@ -45,66 +51,26 @@ namespace Translator
             _letterDictionary['s'] = 'z';
         }
 
-        public bool IsLetterE(char letter)
+        public List<char> ReplaceValues()
         {
-            if (letter == 'e')
+            List<char> finalPhrase = this.GetNewPhrase();
+            int length = this.GetUserInput().Length;
+            for (int i = 0; i < length; i++)
             {
-                return true;
+                char character = this.GetUserInput()[i];
+                char dictionaryValue = this.GetDictionaryValue(character);
+                if (this.GetLetterDictionary() != null)
+                {
+                    //modify value and push
+                    finalPhrase.Add(dictionaryValue);
+                }
+                else
+                {
+                    //just push
+                    finalPhrase.Add(character);
+                }
             }
-            else
-            {
-                return false;
-            }
+            return finalPhrase;
         }
-
-        public bool IsLetterI(char letter)
-        {
-            if (letter == 'I')
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool IsLetterO(char letter)
-        {
-            if (letter == 'o')
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool IsLetterT(char letter)
-        {
-            if (letter == 't')
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool IsLetterS(char letter)
-        {
-            if (letter == 's')
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-
     }
 }

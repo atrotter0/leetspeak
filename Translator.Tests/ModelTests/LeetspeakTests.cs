@@ -31,40 +31,14 @@ namespace Translator.Tests
             Assert.AreEqual('3', testLeetspeak.GetDictionaryValue('e'));
         }
 
-
         [TestMethod]
-        public void IsLetterE_TestForE_True()
+        public void ReplaceValues_TestValuesAreReplaced_PhraseIsConverted()
         {
             Leetspeak testLeetspeak = new Leetspeak();
-            Assert.AreEqual(true, testLeetspeak.IsLetterE('e'));
-        }
-
-        [TestMethod]
-        public void IsLetterI_TestForI_True()
-        {
-            Leetspeak testLeetspeak = new Leetspeak();
-            Assert.AreEqual(true, testLeetspeak.IsLetterI('I'));
-        }
-
-        [TestMethod]
-        public void IsLetterO_TestForO_True()
-        {
-            Leetspeak testLeetspeak = new Leetspeak();
-            Assert.AreEqual(true, testLeetspeak.IsLetterO('o'));
-        }
-
-        [TestMethod]
-        public void IsLetterT_TestForT_True()
-        {
-            Leetspeak testLeetspeak = new Leetspeak();
-            Assert.AreEqual(true, testLeetspeak.IsLetterT('t'));
-        }
-
-        [TestMethod]
-        public void IsLetterS_TestForS_True()
-        {
-            Leetspeak testLeetspeak = new Leetspeak();
-            Assert.AreEqual(true, testLeetspeak.IsLetterS('s'));
+            testLeetspeak.MakeDictionary();
+            testLeetspeak.SetUserInput("eet");
+            List<char> leetWord = new List<char>() {'3', '3', '7' };
+            CollectionAssert.AreEqual(leetWord, testLeetspeak.ReplaceValues());
         }
     }
 }
