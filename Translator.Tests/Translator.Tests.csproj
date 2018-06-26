@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ModelTests\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Translator\Translator.csproj" />
   </ItemGroup>
 </Project>
