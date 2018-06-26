@@ -7,6 +7,7 @@ namespace Translator
     {
         private char[] _userInput;
         private List<char> _newPhrase;
+        private Dictionary<char, char> _letterDictionary;
 
         public void SetUserInput(string userPhrase)
         {
@@ -22,6 +23,26 @@ namespace Translator
         public void SetNewPhrase(List<char> phraseList)
         {
             _newPhrase = phraseList;
+        }
+
+        public List<char> GetNewPhrase()
+        {
+            return _newPhrase;
+        }
+
+        public char GetDictionaryValue(char key)
+        {
+            return _letterDictionary[key];
+        }
+
+        public void MakeDictionary()
+        {
+            _letterDictionary = new Dictionary<char, char>() {};
+            _letterDictionary['e'] = '3';
+            _letterDictionary['I'] = '1';
+            _letterDictionary['o'] = '0';
+            _letterDictionary['t'] = '7';
+            _letterDictionary['s'] = 'z';
         }
 
         public bool IsLetterE(char letter)

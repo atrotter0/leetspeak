@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 using Translator;
 
 namespace Translator.Tests
@@ -9,10 +10,27 @@ namespace Translator.Tests
         [TestMethod]
         public void SetGetUserInput_TestForSetGetInput_CharArray()
         {
-            Leetspeak testLeetSpeak = new Leetspeak();
-            testLeetSpeak.SetUserInput("Dude");
-            CollectionAssert.AreEqual(new char[]{'D','u','d','e'}, testLeetSpeak.GetUserInput());
+            Leetspeak testLeetspeak = new Leetspeak();
+            testLeetspeak.SetUserInput("Dude");
+            CollectionAssert.AreEqual(new char[]{'D','u','d','e'}, testLeetspeak.GetUserInput());
         }
+
+        [TestMethod]
+        public void SetGetNewPhrase_TestForSetGetNewPhrase_CharArray()
+        {
+            Leetspeak testLeetspeak = new Leetspeak();
+            testLeetspeak.SetNewPhrase(new List<char> { 'D', 'u', 'd', 'e' });
+            CollectionAssert.AreEqual(new List<char> { 'D', 'u', 'd', 'e' }, testLeetspeak.GetNewPhrase());
+        }
+
+        [TestMethod]
+        public void MakeDictionary_TestDictionaryIsMade_DictionaryPopulated()
+        {
+            Leetspeak testLeetspeak = new Leetspeak();
+            testLeetspeak.MakeDictionary();
+            Assert.AreEqual('3', testLeetspeak.GetDictionaryValue('e'));
+        }
+
 
         [TestMethod]
         public void IsLetterE_TestForE_True()
