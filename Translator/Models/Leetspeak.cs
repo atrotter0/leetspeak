@@ -72,17 +72,13 @@ namespace Translator
 
             if (index > 0) prevCharacter = this.GetUserInput()[index - 1];
 
-            if (this.LetterSAtStart(character, prevCharacter, index))
+            if (this.LetterSAtStart(character, prevCharacter, index) || !this.FoundKeyInDictionary(character))
             {
                 leetspeakPhrase.Add(character);
-            }
-            else if (this.FoundKeyInDictionary(character))
-            {
-                leetspeakPhrase.Add(this.GetDictionaryValue(character));
             }
             else
             {
-                leetspeakPhrase.Add(character);
+                leetspeakPhrase.Add(this.GetDictionaryValue(character));
             }
         }
 
