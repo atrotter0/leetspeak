@@ -68,9 +68,7 @@ namespace Translator
         public void CheckAndModify(List<char> leetspeakPhrase, int index)
         {   
             char character = this.GetUserInput()[index];
-            char prevCharacter = '0';
-
-            if (index > 0) prevCharacter = this.GetUserInput()[index - 1];
+            char prevCharacter = this.SetPreviousCharacter(index);
 
             if (this.LetterSAtStart(character, prevCharacter, index) || !this.FoundKeyInDictionary(character))
             {
@@ -80,6 +78,13 @@ namespace Translator
             {
                 leetspeakPhrase.Add(this.GetDictionaryValue(character));
             }
+        }
+
+        public char SetPreviousCharacter(int index)
+        {
+            char prevCharacter = '0';
+            if (index > 0) prevCharacter = this.GetUserInput()[index - 1];
+            return prevCharacter;
         }
 
         public bool LetterSAtStart(char character, char prevCharacter, int index)

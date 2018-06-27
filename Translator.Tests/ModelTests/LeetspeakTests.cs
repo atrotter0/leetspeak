@@ -32,6 +32,24 @@ namespace Translator.Tests
         }
 
         [TestMethod]
+        public void SetPreviousCharacter_TestNotAtStartOfArray_ReturnsPrevChar()
+        {
+            Leetspeak testLeetspeak = new Leetspeak();
+            testLeetspeak.SetUserInput("Dude");
+            int index = 1;
+            Assert.AreEqual('D', testLeetspeak.SetPreviousCharacter(index));
+        }
+
+        [TestMethod]
+        public void SetPreviousCharacter_TestAtStartOfArray_Returns0()
+        {
+            Leetspeak testLeetspeak = new Leetspeak();
+            testLeetspeak.SetUserInput("Dude");
+            int index = 0;
+            Assert.AreEqual('0', testLeetspeak.SetPreviousCharacter(index));
+        }
+
+        [TestMethod]
         public void LetterSAtStart_TestForLetterSInsideOfWord_False()
         {
             Leetspeak testLeetspeak = new Leetspeak();
