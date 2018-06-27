@@ -60,7 +60,7 @@ namespace Translator
                 char prevCharacter = '0';
                 if (i > 0)
                 {
-                    prevCharacter = this.GetUserInput()[i - 1];  
+                    prevCharacter = this.GetUserInput()[i - 1];
                 }
 
                 if ((character == 's' && i == 0) || (character == 's' && prevCharacter == ' '))
