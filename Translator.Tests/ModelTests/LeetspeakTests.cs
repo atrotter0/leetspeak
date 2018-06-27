@@ -32,6 +32,44 @@ namespace Translator.Tests
         }
 
         [TestMethod]
+        public void LetterSAtStart_TestForLetterSInsideOfWord_False()
+        {
+            Leetspeak testLeetspeak = new Leetspeak();
+            char character = 's';
+            char prevCharacter = '0';
+            int index = 1;
+            Assert.AreEqual(false, testLeetspeak.LetterSAtStart(character, prevCharacter, index));
+        }
+
+        [TestMethod]
+        public void LetterSAtStart_TestForLetterSAtStartOfPhrase_True()
+        {
+            Leetspeak testLeetspeak = new Leetspeak();
+            char character = 's';
+            char prevCharacter = ' ';
+            int index = 0;
+            Assert.AreEqual(true, testLeetspeak.LetterSAtStart(character, prevCharacter, index));
+        }
+
+        [TestMethod]
+        public void FoundKeyInDictionary_TestForIfKeyIsFound_True()
+        {
+            Leetspeak testLeetspeak = new Leetspeak();
+            char character = 'e';
+            testLeetspeak.MakeDictionary();
+            Assert.AreEqual(true, testLeetspeak.FoundKeyInDictionary(character));
+        }
+
+        [TestMethod]
+        public void FoundKeyInDictionary_TestForIfKeyIsNotFound_False()
+        {
+            Leetspeak testLeetspeak = new Leetspeak();
+            char character = 'M';
+            testLeetspeak.MakeDictionary();
+            Assert.AreEqual(false, testLeetspeak.FoundKeyInDictionary(character));
+        }
+
+        [TestMethod]
         public void ReplaceValues_TestValuesAreReplaced_PhraseIsConverted()
         {
             Leetspeak testLeetspeak = new Leetspeak();
