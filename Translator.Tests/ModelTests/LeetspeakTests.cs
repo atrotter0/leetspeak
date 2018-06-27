@@ -16,11 +16,11 @@ namespace Translator.Tests
         }
 
         [TestMethod]
-        public void SetGetNewPhrase_TestForSetGetNewPhrase_CharArray()
+        public void SetGetModifiedPhrase_TestForSetGetModifiedPhrase_CharArray()
         {
             Leetspeak testLeetspeak = new Leetspeak();
-            testLeetspeak.SetNewPhrase(new List<char> { 'D', 'u', 'd', 'e' });
-            CollectionAssert.AreEqual(new List<char> { 'D', 'u', 'd', 'e' }, testLeetspeak.GetNewPhrase());
+            testLeetspeak.SetModifiedPhrase(new List<char> { 'D', 'u', 'd', 'e' });
+            CollectionAssert.AreEqual(new List<char> { 'D', 'u', 'd', 'e' }, testLeetspeak.GetModifiedPhrase());
         }
 
         [TestMethod]
@@ -35,8 +35,8 @@ namespace Translator.Tests
         public void ReplaceValues_TestValuesAreReplaced_PhraseIsConverted()
         {
             Leetspeak testLeetspeak = new Leetspeak();
-            testLeetspeak.MakeDictionary();
             testLeetspeak.SetUserInput("sleets");
+            testLeetspeak.MakeDictionary();
             List<char> leetWord = new List<char>() { 's', 'l', '3', '3', '7', 'z' };
             CollectionAssert.AreEqual(leetWord, testLeetspeak.ReplaceValues());
         }

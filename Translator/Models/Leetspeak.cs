@@ -5,29 +5,28 @@ namespace Translator
 {
     public class Leetspeak
     {
-        private char[] _userInput;
-        private List<char> _newPhrase = new List<char>() { };
-        private Dictionary<char, char> _letterDictionary;
+        private char[] _charactersFromInput = new char[] {};
+        private List<char> _modifiedPhrase = new List<char>() {};
+        private Dictionary<char, char> _letterDictionary = new Dictionary<char, char>() {};
 
         public void SetUserInput(string userPhrase)
         {
-            char[] individualCharacters = userPhrase.ToCharArray();
-            _userInput = individualCharacters;
+            _charactersFromInput = userPhrase.ToCharArray();
         }
 
         public char[] GetUserInput()
         {
-            return _userInput;
+            return _charactersFromInput;
         }
 
-        public void SetNewPhrase(List<char> phraseList)
+        public void SetModifiedPhrase(List<char> phrase)
         {
-            _newPhrase = phraseList;
+            _modifiedPhrase = phrase;
         }
 
-        public List<char> GetNewPhrase()
+        public List<char> GetModifiedPhrase()
         {
-            return _newPhrase;
+            return _modifiedPhrase;
         }
 
         public char GetDictionaryValue(char key)
@@ -53,7 +52,7 @@ namespace Translator
 
         public List<char> ReplaceValues()
         {
-            List<char> finalPhrase = this.GetNewPhrase();
+            List<char> leatspeakPhrase = this.GetModifiedPhrase();
             int length = this.GetUserInput().Length;
             for (int i = 0; i < length; i++)
             {
@@ -66,18 +65,18 @@ namespace Translator
 
                 if ((character == 's' && i == 0) || (character == 's' && prevCharacter == ' '))
                 {
-                    finalPhrase.Add(character);
+                    leatspeakPhrase.Add(character);
                 }
                 else if (this.GetLetterDictionary().ContainsKey(character))
                 {
-                    finalPhrase.Add(this.GetDictionaryValue(character));
+                    leatspeakPhrase.Add(this.GetDictionaryValue(character));
                 }
                 else
                 {
-                    finalPhrase.Add(character);
+                    leatspeakPhrase.Add(character);
                 }
             }
-            return finalPhrase;
+            return leatspeakPhrase;
         }
     }
 }
