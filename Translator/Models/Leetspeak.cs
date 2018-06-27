@@ -70,10 +70,7 @@ namespace Translator
             char character = this.GetUserInput()[index];
             char prevCharacter = '0';
 
-            if (index > 0)
-            {
-                prevCharacter = this.GetUserInput()[index - 1];
-            }
+            if (index > 0) prevCharacter = this.GetUserInput()[index - 1];
 
             if (this.LetterSAtStart(character, prevCharacter, index))
             {
