@@ -44,10 +44,14 @@ namespace Translator
         {
             _letterDictionary = new Dictionary<char, char>() {};
             _letterDictionary['e'] = '3';
+            _letterDictionary['E'] = '3';
             _letterDictionary['I'] = '1';
             _letterDictionary['o'] = '0';
+            _letterDictionary['O'] = '0';
             _letterDictionary['t'] = '7';
+            _letterDictionary['T'] = '7';
             _letterDictionary['s'] = 'z';
+            _letterDictionary['S'] = 'z';
         }
 
         public List<char> ReplaceValues()
