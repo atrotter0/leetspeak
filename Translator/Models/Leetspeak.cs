@@ -54,29 +54,26 @@ namespace Translator
             _letterDictionary['S'] = 'z';
         }
 
-        public List<char> ReplaceValues()
+        public void CreateLeetspeak()
         {
-            List<char> leetspeakPhrase = new List<char>() {};
-            int charsArrayLength = this.GetUserInput().Length;
-            for (int i = 0; i < charsArrayLength; i++)
+            for (int i = 0; i < this.GetUserInput().Length; i++)
             {
-                this.CheckAndModify(leetspeakPhrase, i);
+                this.CheckAndModify(i);
             }
-            return leetspeakPhrase;
         }
 
-        public void CheckAndModify(List<char> leetspeakPhrase, int index)
+        public void CheckAndModify(int index)
         {   
             char character = this.GetUserInput()[index];
             char prevCharacter = this.SetPreviousCharacter(index);
 
             if (this.LetterSAtStart(character, prevCharacter, index) || !this.FoundKeyInDictionary(character))
             {
-                leetspeakPhrase.Add(character);
+                this.GetModifiedPhrase().Add(character);
             }
             else
             {
-                leetspeakPhrase.Add(this.GetDictionaryValue(character));
+                this.GetModifiedPhrase().Add(this.GetDictionaryValue(character));
             }
         }
 

@@ -88,13 +88,14 @@ namespace Translator.Tests
         }
 
         [TestMethod]
-        public void ReplaceValues_TestValuesAreReplaced_PhraseIsConverted()
+        public void CreateLeetspeak_TestValuesAreReplaced_PhraseIsConverted()
         {
             Leetspeak testLeetspeak = new Leetspeak();
             testLeetspeak.SetUserInput("sleets");
             testLeetspeak.MakeDictionary();
-            List<char> leetWord = new List<char>() { 's', 'l', '3', '3', '7', 'z' };
-            CollectionAssert.AreEqual(leetWord, testLeetspeak.ReplaceValues());
+            testLeetspeak.CreateLeetspeak();
+            List<char> leetPhrase = new List<char> { 's', 'l', '3', '3', '7', 'z' };
+            CollectionAssert.AreEqual(leetPhrase, testLeetspeak.GetModifiedPhrase());
         }
     }
 }
