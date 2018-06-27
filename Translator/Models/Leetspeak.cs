@@ -56,31 +56,47 @@ namespace Translator
 
         public List<char> ReplaceValues()
         {
-            List<char> leetspeakPhrase = this.GetModifiedPhrase();
-            int length = this.GetUserInput().Length;
-            for (int i = 0; i < length; i++)
+            List<char> leetspeakPhrase = new List<char>() {};
+            int charsArrayLength = this.GetUserInput().Length;
+            for (int i = 0; i < charsArrayLength; i++)
             {
-                char character = this.GetUserInput()[i];
-                char prevCharacter = '0';
-                if (i > 0)
-                {
-                    prevCharacter = this.GetUserInput()[i - 1];
-                }
-
-                if ((character == 's' && i == 0) || (character == 's' && prevCharacter == ' '))
-                {
-                    leetspeakPhrase.Add(character);
-                }
-                else if (this.GetLetterDictionary().ContainsKey(character))
-                {
-                    leetspeakPhrase.Add(this.GetDictionaryValue(character));
-                }
-                else
-                {
-                    leetspeakPhrase.Add(character);
-                }
+                this.CheckAndModify(leetspeakPhrase, i);
             }
             return leetspeakPhrase;
+        }
+
+        public void CheckAndModify(List<char> leetspeakPhrase, int index)
+        {   
+            char character = this.GetUserInput()[index];
+            char prevCharacter = '0';
+
+            if (index > 0)
+            {
+                prevCharacter = this.GetUserInput()[index - 1];
+            }
+
+            if (this.LetterSAtStart(character, prevCharacter, index))
+            {
+                leetspeakPhrase.Add(character);
+            }
+            else if (this.FoundKeyInDictionary(character))
+            {
+                leetspeakPhrase.Add(this.GetDictionaryValue(character));
+            }
+            else
+            {
+                leetspeakPhrase.Add(character);
+            }
+        }
+
+        public bool LetterSAtStart(char character, char prevCharacter, int index)
+        {
+            return (character == 's' && index == 0) || (character == 's' && prevCharacter == ' ');
+        }
+
+        public bool FoundKeyInDictionary(char character)
+        {
+            return this.GetLetterDictionary().ContainsKey(character);
         }
     }
 }
