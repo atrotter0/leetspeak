@@ -56,7 +56,7 @@ namespace Translator
 
         public List<char> ReplaceValues()
         {
-            List<char> leatspeakPhrase = this.GetModifiedPhrase();
+            List<char> leetspeakPhrase = this.GetModifiedPhrase();
             int length = this.GetUserInput().Length;
             for (int i = 0; i < length; i++)
             {
@@ -69,18 +69,18 @@ namespace Translator
 
                 if ((character == 's' && i == 0) || (character == 's' && prevCharacter == ' '))
                 {
-                    leatspeakPhrase.Add(character);
+                    leetspeakPhrase.Add(character);
                 }
                 else if (this.GetLetterDictionary().ContainsKey(character))
                 {
-                    leatspeakPhrase.Add(this.GetDictionaryValue(character));
+                    leetspeakPhrase.Add(this.GetDictionaryValue(character));
                 }
                 else
                 {
-                    leatspeakPhrase.Add(character);
+                    leetspeakPhrase.Add(character);
                 }
             }
-            return leatspeakPhrase;
+            return leetspeakPhrase;
         }
     }
 }
